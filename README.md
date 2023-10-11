@@ -1,4 +1,4 @@
-# dunes-node 
+# yt-dlp-js 
 
 NPM library for easy usage of yt-dlp
 
