@@ -1,4 +1,4 @@
-# yt-dlp-js 
+# yt-dlp-js [![Test and build](https://github.com/Angael/yt-dlp-js/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/Angael/yt-dlp-js/actions/workflows/node.js.yml)
 
 NPM library for easy usage of yt-dlp
 
