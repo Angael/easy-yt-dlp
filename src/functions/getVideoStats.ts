@@ -19,8 +19,10 @@ export const getVideoStats = (
 
     let stats = {};
 
+    let out: string[] = [];
     ytDlpProcess.stdout.on("data", (buffer: Buffer) => {
       const text = buffer.toString().trim();
+      out.push(text);
       if (!text) return;
 
       if (isJson(text)) {
@@ -32,20 +34,19 @@ export const getVideoStats = (
     const errors: string[] = [];
     ytDlpProcess.stderr.on("data", (buffer: Buffer) => {
       const text = buffer.toString().trim();
-      if (!text) return;
-
       errors.push(text);
+      if (!text) return;
     });
 
     ytDlpProcess.on("close", async (code: any) => {
       if (code === 1) {
-        rej(new Error(errors.join("\n")));
+        rej(new Error([...out, ...errors].join("\n")));
       }
 
       if (Object.keys(stats).length) {
         res(stats as VideoStats);
       } else {
-        rej(new Error(errors.join("\n")));
+        rej(new Error([...out, ...errors].join("\n")));
       }
     });
   });
