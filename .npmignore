@@ -1,0 +1,9 @@
+__TEST__
+.idea
+Dockerfile
+.dockerignore
+.github
+docs
+tsconfig.json
+jest.config.js
+README.md
