@@ -18,7 +18,5 @@ Depends on and uses `yt-dlp`. `yt-dlp` is not included in this package and must 
 
 > Use `yarn link` to test this library locally in other projects before publishing
 
-> To test library on linux (ffmpeg binary might behave different there) use docker `docker build .`
-
-### Maybe useful links
-https://cmdcolin.github.io/posts/2022-05-27-youmaynotneedabundler
+> To test library on linux (yt-dlp binary might behave different there) use docker `docker build .`
+> TODO: fix dockerfile
