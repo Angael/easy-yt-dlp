@@ -1,7 +1,4 @@
-import path from "node:path";
-
 import { DownloadVideoOutput, DownloadVideoTypes } from "./downloadVideo.types";
-import { getVideoStats } from "./getVideoStats";
 import child from "child_process";
 
 export const downloadVideo = async (
@@ -9,23 +6,28 @@ export const downloadVideo = async (
 ): Promise<DownloadVideoOutput> => {
   const { ytDlpPath, link, filename, outputDir } = params;
 
-  const stats = await getVideoStats(ytDlpPath, link);
-  const outputFilename = `${filename}.${stats.ext}`;
-  const createdFilePath = path.join(outputDir, outputFilename);
-
   const args = [
     link,
     "-o",
-    outputFilename,
+    `${filename}.%(ext)s`,
     "-P",
     outputDir,
     "--no-warnings",
     "--no-progress",
     "--no-simulate",
     "-q",
+    "--print",
+    "filename",
   ];
 
   const ytDlpProcess = child.spawn(ytDlpPath, args);
+
+  let createdFilePath = "";
+  ytDlpProcess.stdout.on("data", (buffer: Buffer) => {
+    const text = buffer.toString().trim();
+    if (!text) return;
+    createdFilePath = text;
+  });
 
   return new Promise((res, rej) => {
     ytDlpProcess.on("close", async (code: any) => {
@@ -33,9 +35,7 @@ export const downloadVideo = async (
         rej();
       }
 
-      res({
-        createdFilePath,
-      });
+      res({ createdFilePath });
     });
   });
 };
