@@ -29,15 +29,23 @@ export const getVideoStats = (
       }
     });
 
+    const errors: string[] = [];
+    ytDlpProcess.stderr.on("data", (buffer: Buffer) => {
+      const text = buffer.toString().trim();
+      if (!text) return;
+
+      errors.push(text);
+    });
+
     ytDlpProcess.on("close", async (code: any) => {
       if (code === 1) {
-        rej();
+        rej(new Error(errors.join("\n")));
       }
 
       if (Object.keys(stats).length) {
         res(stats as VideoStats);
       } else {
-        rej();
+        rej(new Error(errors.join("\n")));
       }
     });
   });
