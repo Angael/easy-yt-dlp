@@ -154,3 +154,7 @@ dist
 *.roq
 *.nsv
 
+# ytdlp parts
+*.part
+
+/_local_/

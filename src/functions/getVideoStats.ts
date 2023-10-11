@@ -1,5 +1,5 @@
-import { runYtDlp } from "./core/runYtDlp";
 import { VideoJson } from "../types";
+import child from "child_process";
 
 const isJson = (text: string) => {
   try {
@@ -10,27 +10,34 @@ const isJson = (text: string) => {
   }
 };
 
-export async function getVideoStats(
+export const getVideoStats = (
   ytDlpPath: string,
   link: string
-): Promise<VideoJson> {
-  const objFromJson = await new Promise(async (res, rej) => {
-    // TODO: problem, that we dont wait for end of process
-    await runYtDlp({
-      path: ytDlpPath,
-      args: [link, "-j", "--no-warnings"],
-      options: {
-        onOutput: (text) => {
-          if (isJson(text)) {
-            res(JSON.parse(text));
-          }
-        },
-      },
+): Promise<VideoJson> =>
+  new Promise(async (res, rej) => {
+    const ytDlpProcess = child.spawn(ytDlpPath, [link, "-j", "--no-warnings"]);
+
+    let stats = {};
+
+    ytDlpProcess.stdout.on("data", (buffer: Buffer) => {
+      const text = buffer.toString().trim();
+      if (!text) return;
+
+      if (isJson(text)) {
+        // hopefully only one json object is written to stdout
+        stats = JSON.parse(text);
+      }
     });
 
-    // if didn't resolve, but ended
-    rej();
-  });
+    ytDlpProcess.on("close", async (code: any) => {
+      if (code === 1) {
+        rej();
+      }
 
-  return objFromJson as VideoJson;
-}
+      if (Object.keys(stats).length) {
+        res(stats as VideoJson);
+      } else {
+        rej();
+      }
+    });
+  });

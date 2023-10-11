@@ -23,9 +23,11 @@ export const runYtDlp = ({
     const stats = getVideoStats(path, args[0]);
 
     const fullArgs = [...CONSTANT_ARGS, ...args];
-    const ffmpegConsole = child.spawn(path, fullArgs);
+    const ytDlpProcess = child.spawn(path, fullArgs);
 
-    console.log(path + " " + fullArgs.join(" "));
+    if (process.env.NODE_ENV === "development") {
+      console.log(path + " " + fullArgs.join(" "));
+    }
 
     const noProgressOutputArray: string[] = [];
 
@@ -46,15 +48,18 @@ export const runYtDlp = ({
       }
     };
 
-    ffmpegConsole.stderr.on("data", onBuffer);
-    ffmpegConsole.stdout.on("data", onBuffer);
+    ytDlpProcess.stderr.on("data", onBuffer);
+    ytDlpProcess.stdout.on("data", onBuffer);
 
-    ffmpegConsole.on("close", async (code: any) => {
+    ytDlpProcess.on("close", async (code: any) => {
       if (code === 1) {
         rej();
       }
 
-      console.log("ending, checking for file path", noProgressOutputArray);
+      if (process.env.NODE_ENV === "development") {
+        console.log("ending, checking for file path", noProgressOutputArray);
+      }
+
       const filename =
         noProgressOutputArray[noProgressOutputArray.length - 1].trim();
       if (await checkFileExists(filename)) {
