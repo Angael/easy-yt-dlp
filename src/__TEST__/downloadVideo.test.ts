@@ -1,13 +1,13 @@
 import fs from "fs-extra";
 import { join } from "path";
-import { runYtDlp } from "../functions/core/runYtDlp";
+import { downloadVideo } from "../functions/downloadVideo";
 import { checkFileExists } from "../functions/utils/checkFileExists";
 
 const videoDir = join(__dirname, "/videos");
 
 jest.setTimeout(20 * 1000);
 
-describe("runYtDlp", () => {
+describe("downloadVideo", () => {
   beforeAll(() => {
     fs.ensureDirSync(videoDir);
     fs.emptyDirSync(videoDir);
@@ -18,7 +18,7 @@ describe("runYtDlp", () => {
   });
 
   afterAll(() => {
-    fs.rmdirSync(videoDir);
+    fs.emptyDirSync(videoDir);
   });
 
   it("tests received env argument", async function () {
@@ -27,23 +27,17 @@ describe("runYtDlp", () => {
 
   it("creates file / returns its filename", async function () {
     const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
-    const videoName = "vid.webm";
-    const { filename } = await runYtDlp({
-      path: process.env.YTDLP_PATH!,
-      args: [link, "-P", videoDir, "-o", videoName],
-      options: {
-        onProgress: (progress) => {
-          // console.log("progress", progress);
-        },
-        onOutput: (output) => {
-          // console.log("output", output);
-        },
-      },
+    const videoName = "vid";
+    const { createdFilePath } = await downloadVideo({
+      ytDlpPath: process.env.YTDLP_PATH!,
+      link,
+      outputDir: videoDir,
+      filename: videoName,
     });
 
-    const exists = await checkFileExists(filename);
+    const exists = await checkFileExists(createdFilePath);
 
-    expect(filename).toBeTruthy();
+    expect(createdFilePath).toBeTruthy();
     expect(exists).toEqual(true);
   });
 });

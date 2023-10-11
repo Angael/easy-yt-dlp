@@ -1,5 +1,5 @@
-import { VideoJson } from "../types";
 import child from "child_process";
+import { VideoStats } from "./getVideoStats.types";
 
 const isJson = (text: string) => {
   try {
@@ -13,7 +13,7 @@ const isJson = (text: string) => {
 export const getVideoStats = (
   ytDlpPath: string,
   link: string
-): Promise<VideoJson> =>
+): Promise<VideoStats> =>
   new Promise(async (res, rej) => {
     const ytDlpProcess = child.spawn(ytDlpPath, [link, "-j", "--no-warnings"]);
 
@@ -35,7 +35,7 @@ export const getVideoStats = (
       }
 
       if (Object.keys(stats).length) {
-        res(stats as VideoJson);
+        res(stats as VideoStats);
       } else {
         rej();
       }

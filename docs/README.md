@@ -1,83 +1,112 @@
-@vanih/dunes-node
+yt-dlp-js
 
-# @vanih/dunes-node
+# yt-dlp-js
 
 ## Table of contents
 
 ### Type Aliases
 
-- [CompressionOptions](README.md#compressionoptions)
-- [FfmpegData](README.md#ffmpegdata)
-- [RunFfmpegOptions](README.md#runffmpegoptions)
-- [ThumbnailOptions](README.md#thumbnailoptions)
+- [DownloadVideoOutput](README.md#downloadvideooutput)
+- [DownloadVideoTypes](README.md#downloadvideotypes)
+- [Thumbnail](README.md#thumbnail)
+- [VideoFormat](README.md#videoformat)
 - [VideoStats](README.md#videostats)
 
 ### Functions
 
-- [analyzeVideo](README.md#analyzevideo)
-- [compressVideo](README.md#compressvideo)
-- [createThumbnail](README.md#createthumbnail)
+- [downloadVideo](README.md#downloadvideo)
+- [getVideoStats](README.md#getvideostats)
 
 ## Type Aliases
 
-### CompressionOptions
+### DownloadVideoOutput
 
-Ƭ **CompressionOptions**: { `audioBitrateKbs?`: `number` ; `bitrateKbs?`: `number` ; `crf?`: `IntRange`<``0``, ``64``\> ; `height?`: `number` ; `maxBitrateKbs?`: `number` ; `minBitrateKbs?`: `number` ; `width?`: `number`  } & [`RunFfmpegOptions`](README.md#runffmpegoptions)
-
-#### Defined in
-
-[types.ts:19](https://github.com/Angael/dunes-node/blob/e9e9832/src/types.ts#L19)
-
-___
-
-### FfmpegData
-
-Ƭ **FfmpegData**: `Object`
+Ƭ **DownloadVideoOutput**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `bitrate` | `number` |
-| `fps` | `number` |
-| `frame` | `number` |
-| `q` | `number` |
-| `rawString` | `string` |
-| `size` | `number` |
-| `speed` | `number` |
-| `time` | `number` |
+| `createdFilePath` | `string` |
 
 #### Defined in
 
-[types.ts:43](https://github.com/Angael/dunes-node/blob/e9e9832/src/types.ts#L43)
+functions/downloadVideo.types.ts:9
 
 ___
 
-### RunFfmpegOptions
+### DownloadVideoTypes
 
-Ƭ **RunFfmpegOptions**: `Object`
+Ƭ **DownloadVideoTypes**: `Object`
 
 #### Type declaration
 
 | Name | Type |
 | :------ | :------ |
-| `onProgress?` | (`data`: [`FfmpegData`](README.md#ffmpegdata)) => `void` |
-| `onStart?` | (`command`: `string`) => `void` |
-| `shouldOverwrite?` | `boolean` |
+| `filename` | `string` |
+| `link` | `string` |
+| `outputDir` | `string` |
+| `ytDlpPath` | `string` |
 
 #### Defined in
 
-[types.ts:37](https://github.com/Angael/dunes-node/blob/e9e9832/src/types.ts#L37)
+functions/downloadVideo.types.ts:1
 
 ___
 
-### ThumbnailOptions
+### Thumbnail
 
-Ƭ **ThumbnailOptions**: { `height`: `number` ; `time?`: `number` ; `width`: `number`  } & [`RunFfmpegOptions`](README.md#runffmpegoptions)
+Ƭ **Thumbnail**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `id` | `string` |
+| `preference` | `number` |
+| `url` | `string` |
 
 #### Defined in
 
-[types.ts:13](https://github.com/Angael/dunes-node/blob/e9e9832/src/types.ts#L13)
+functions/getVideoStats.types.ts:31
+
+___
+
+### VideoFormat
+
+Ƭ **VideoFormat**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `acodec` | `string` |
+| `aspect_ratio` | `number` \| ``null`` |
+| `audio_ext` | `string` |
+| `columns` | `number` \| ``null`` |
+| `ext` | `string` |
+| `format` | `string` |
+| `format_id` | `string` |
+| `format_note` | `string` |
+| `fps` | `number` \| ``null`` |
+| `fragments` | { `duration`: `number` ; `url`: `string`  }[] |
+| `height` | `number` \| ``null`` |
+| `http_headers` | { `Accept`: `string` ; `Accept-Language`: `string` ; `Sec-Fetch-Mode`: `string` ; `User-Agent`: `string`  } |
+| `http_headers.Accept` | `string` |
+| `http_headers.Accept-Language` | `string` |
+| `http_headers.Sec-Fetch-Mode` | `string` |
+| `http_headers.User-Agent` | `string` |
+| `protocol` | `string` |
+| `resolution` | `string` |
+| `rows` | `number` \| ``null`` |
+| `url` | `string` |
+| `vcodec` | `string` |
+| `video_ext` | `string` |
+| `width` | `number` \| ``null`` |
+
+#### Defined in
+
+functions/getVideoStats.types.ts:1
 
 ___
 
@@ -89,125 +118,66 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `bitrateKb` | `number` |
-| `durationMs` | `number` |
+| `acodec` | `string` |
+| `channel_id` | `string` |
+| `channel_url` | `string` |
+| `description` | `string` |
+| `duration` | `number` |
+| `ext` | `string` |
+| `formats` | [`VideoFormat`](README.md#videoformat)[] |
+| `fps` | `number` |
 | `height` | `number` |
-| `sizeBytes` | `number` |
+| `id` | `string` |
+| `thumbnail` | `string` |
+| `thumbnails` | [`Thumbnail`](README.md#thumbnail)[] |
+| `title` | `string` |
+| `uploader` | `string` |
+| `uploader_id` | `string` |
+| `uploader_url` | `string` |
+| `vcodec` | `string` |
 | `width` | `number` |
 
 #### Defined in
 
-[types.ts:29](https://github.com/Angael/dunes-node/blob/e9e9832/src/types.ts#L29)
+functions/getVideoStats.types.ts:37
 
 ## Functions
 
-### analyzeVideo
+### downloadVideo
 
-▸ **analyzeVideo**(`path`): `Promise`<[`VideoStats`](README.md#videostats)\>
-
-**`Example`**
-
-```ts
-import { analyzeVideo } from '@vanih/dunes-node';
-
-const result = await analyzeVideo('./video.mp4');
-```
+▸ **downloadVideo**(`params`): `Promise`<[`DownloadVideoOutput`](README.md#downloadvideooutput)\>
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `path` | `string` | Path to video |
+| Name | Type |
+| :------ | :------ |
+| `params` | [`DownloadVideoTypes`](README.md#downloadvideotypes) |
+
+#### Returns
+
+`Promise`<[`DownloadVideoOutput`](README.md#downloadvideooutput)\>
+
+#### Defined in
+
+functions/downloadVideo.ts:7
+
+___
+
+### getVideoStats
+
+▸ **getVideoStats**(`ytDlpPath`, `link`): `Promise`<[`VideoStats`](README.md#videostats)\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `ytDlpPath` | `string` |
+| `link` | `string` |
 
 #### Returns
 
 `Promise`<[`VideoStats`](README.md#videostats)\>
 
-Promise with video stats of video from supplied path.
-
 #### Defined in
 
-[functions/analyzeVideo.ts:34](https://github.com/Angael/dunes-node/blob/e9e9832/src/functions/analyzeVideo.ts#L34)
-
-___
-
-### compressVideo
-
-▸ **compressVideo**(`srcPath`, `outPath`, `options`): `Promise`<`void`\>
-
-**`Example`**
-
-Create compressed copy of video, with the worst possible quality and best size. Resolution is kept original
-```ts
-import { compressVideo } from '@vanih/dunes-node';
-
-const src = './video_in.mp4';
-const out = './video_out.webm';
-await compressVideo(src, out, {
-    crf: 63,
-});
-```
-
-**`Throws`**
-
-When ffmpeg encounters an error
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `srcPath` | `string` | Path to existing original video |
-| `outPath` | `string` | Path where compressed video should be saved. Currently only supports webm files. |
-| `options` | [`CompressionOptions`](README.md#compressionoptions) | Compression options to use when compressing the video |
-
-#### Returns
-
-`Promise`<`void`\>
-
-Promise that resolves when compression ends.
-
-#### Defined in
-
-[functions/compressVideo.ts:24](https://github.com/Angael/dunes-node/blob/e9e9832/src/functions/compressVideo.ts#L24)
-
-___
-
-### createThumbnail
-
-▸ **createThumbnail**(`srcPath`, `outPath`, `options`): `Promise`<`void`\>
-
-**`Throws`**
-
-When ffmpeg encounters error
-
-**`Example`**
-
-Create thumbnail with resolution 32x32
-```ts
-import { createThumbnail } from '@vanih/dunes-node';
-
-const src = './video_in.mp4';
-const out = './video_out.webp';
-await createThumbnail(src, out, {
-  width: 32,
-  height: 32,
-});
-```
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `srcPath` | `string` | Path to existing original video |
-| `outPath` | `string` | Path to webp thumbnail that you want to create |
-| `options` | [`ThumbnailOptions`](README.md#thumbnailoptions) | Options for creating thumbnail |
-
-#### Returns
-
-`Promise`<`void`\>
-
-Promise that resolves when thumbnail is created
-
-#### Defined in
-
-[functions/createThumbnail.ts:27](https://github.com/Angael/dunes-node/blob/e9e9832/src/functions/createThumbnail.ts#L27)
+functions/getVideoStats.ts:13

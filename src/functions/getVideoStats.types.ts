@@ -1,20 +1,3 @@
-export type YTDlpArgs = {
-  path: string;
-  args: string[];
-  options?: {
-    onOutput?: (text: string) => void;
-    onProgress?: (percentageDownloaded: number) => void;
-    // filename to save, without extension
-    outputFilename?: string;
-    // ms to wait for download to end
-    timeout?: number;
-  };
-};
-
-export type YtDlpOutput = {
-  filename: string; // Bad name, change to full filepath
-};
-
 export type VideoFormat = {
   format_id: string;
   format_note: string;
@@ -51,7 +34,7 @@ export type Thumbnail = {
   id: string;
 };
 
-export type VideoJson = {
+export type VideoStats = {
   id: string;
   title: string;
   ext: string;
