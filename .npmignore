@@ -7,3 +7,15 @@ docs
 tsconfig.json
 jest.config.js
 README.md
+_local_
+*.mp4
+*.mov
+*.avi
+*.wmv
+*.mkv
+*.flv
+*.f4v
+*.f4p
+*.f4a
+*.f4b
+*.webm

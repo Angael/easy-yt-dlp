@@ -17,6 +17,4 @@ Depends on and uses `yt-dlp`. `yt-dlp` is not included in this package and must 
 4. `npm publish`
 
 > Use `yarn link` to test this library locally in other projects before publishing
-
-> To test library on linux (yt-dlp binary might behave different there) use docker `docker build .`
-> TODO: fix dockerfile
+> 

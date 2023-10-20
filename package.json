@@ -23,7 +23,6 @@
     "prebuild": "rimraf lib",
     "build": "tsc",
     "test": "cross-env YTDLP_PATH=\"yt-dlp\" jest",
-    "test:linux": "docker build . -t ytdlpjs_node_tests_linux",
     "test:watch": "jest --watch",
     "prepublishOnly": "yarn build && yarn test",
     "preversion": "yarn build && yarn generate-docs",
