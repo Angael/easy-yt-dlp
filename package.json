@@ -47,7 +47,5 @@
   "engines": {
     "node": ">=v18.12.1"
   },
-  "dependencies": {
-    "tslib": "^2.5.0"
-  }
+  "dependencies": {}
 }
