@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import { join } from "path";
 import { downloadVideo } from "../functions/downloadVideo";
-import { checkFileExists } from "../functions/utils/checkFileExists";
+import { checkFileExists } from "./utils/checkFileExists";
 
 const videoDir = join(__dirname, "/videos");
 
