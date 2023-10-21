@@ -12,7 +12,7 @@ Depends on and uses `yt-dlp`. `yt-dlp` is not included in this package and must 
 ## Usage
 
 ```ts
-import { downloadVideo } from 'yt-dlp-simple';
+import { downloadVideo } from 'easy-yt-dlp';
 
 const { createdFilePath } = await downloadVideo({
   ytDlpPath: process.env.YTDLP_PATH,
