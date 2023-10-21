@@ -31,7 +31,7 @@ easy-yt-dlp
 
 #### Defined in
 
-[functions/downloadVideo.types.ts:11](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/downloadVideo.types.ts#L11)
+[functions/downloadVideo.types.ts:11](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/downloadVideo.types.ts#L11)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[functions/downloadVideo.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/downloadVideo.types.ts#L1)
+[functions/downloadVideo.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/downloadVideo.types.ts#L1)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:31](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/getVideoStats.types.ts#L31)
+[functions/getVideoStats.types.ts:31](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/getVideoStats.types.ts#L31)
 
 ___
 
@@ -107,7 +107,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/getVideoStats.types.ts#L1)
+[functions/getVideoStats.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/getVideoStats.types.ts#L1)
 
 ___
 
@@ -140,7 +140,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:37](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/getVideoStats.types.ts#L37)
+[functions/getVideoStats.types.ts:37](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/getVideoStats.types.ts#L37)
 
 ## Functions
 
@@ -160,7 +160,7 @@ ___
 
 #### Defined in
 
-[functions/downloadVideo.ts:4](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/downloadVideo.ts#L4)
+[functions/downloadVideo.ts:4](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/downloadVideo.ts#L4)
 
 ___
 
@@ -181,4 +181,4 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.ts:4](https://github.com/Angael/easy-yt-dlp/blob/f560084/src/functions/getVideoStats.ts#L4)
+[functions/getVideoStats.ts:4](https://github.com/Angael/easy-yt-dlp/blob/01dd679/src/functions/getVideoStats.ts#L4)

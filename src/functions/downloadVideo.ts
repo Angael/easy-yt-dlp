@@ -15,6 +15,11 @@ export const downloadVideo = async (
     "--no-warnings",
     "--no-progress",
     "--no-simulate",
+    // Prevent playlists from being downloaded
+    "--break-on-reject",
+    "--match-filter",
+    "!playlist",
+
     "-q",
     "--print",
     "filename",
