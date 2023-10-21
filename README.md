@@ -4,9 +4,10 @@ NPM library for easy usage of yt-dlp
 
 Depends on and uses `yt-dlp`. `yt-dlp` is not included in this package and must be installed separately.
 
-## Docs
+## Links
 
-[Library documentation](docs/README.md)
+- [Library documentation](docs/README.md)
+- [NPM link](https://www.npmjs.com/package/easy-yt-dlp)
 
 ## Usage
 
