@@ -1,19 +1,19 @@
 {
-  "name": "yt-dlp-js",
+  "name": "easy-yt-dlp",
   "version": "0.0.1",
   "description": "NPM library for easy usage of yt-dlp",
   "keywords": [
     "yt-dlp",
     "npm"
   ],
-  "homepage": "https://github.com/Angael/yt-dlp-js",
+  "homepage": "https://github.com/Angael/easy-yt-dlp",
   "author": {
     "name": "Krzysztof Widacki",
     "email": "krzysztofwidacki@gmail.com",
     "url": "https://krzysztof.widacki.me/"
   },
   "repository": {
-    "url": "https://github.com/Angael/yt-dlp-js.git",
+    "url": "https://github.com/Angael/easy-yt-dlp.git",
     "type": "git"
   },
   "private": false,

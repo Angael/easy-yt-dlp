@@ -1,6 +1,6 @@
-yt-dlp-js
+easy-yt-dlp
 
-# yt-dlp-js
+# easy-yt-dlp
 
 ## Table of contents
 
