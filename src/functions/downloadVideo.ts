@@ -4,10 +4,11 @@ import child from "child_process";
 export const downloadVideo = async (
   params: DownloadVideoTypes
 ): Promise<DownloadVideoOutput> => {
-  const { ytDlpPath, link, filename, outputDir } = params;
+  const { ytDlpPath, link, filename, outputDir, format } = params;
 
-  const args = [
+  const args: string[] = [
     link,
+    format && ["-f", format],
     "-o",
     `${filename}.%(ext)s`,
     "-P",
@@ -19,11 +20,12 @@ export const downloadVideo = async (
     "--break-on-reject",
     "--match-filter",
     "!playlist",
-
     "-q",
     "--print",
     "filename",
-  ];
+  ]
+    .flat()
+    .filter((x): x is string => typeof x === "string");
 
   const ytDlpProcess = child.spawn(ytDlpPath, args);
 

@@ -40,4 +40,21 @@ describe("downloadVideo", () => {
     expect(createdFilePath).toBeTruthy();
     expect(exists).toEqual(true);
   });
+
+  it("can accept format param", async function () {
+    const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
+    const videoName = "vid-bad-format";
+    const { createdFilePath } = await downloadVideo({
+      ytDlpPath: process.env.YTDLP_PATH!,
+      link,
+      format: "worstvideo*",
+      outputDir: videoDir,
+      filename: videoName,
+    });
+
+    const exists = await checkFileExists(createdFilePath);
+
+    expect(createdFilePath).toBeTruthy();
+    expect(exists).toEqual(true);
+  });
 });
