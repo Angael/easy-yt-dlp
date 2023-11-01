@@ -1,6 +1,6 @@
 {
   "name": "easy-yt-dlp",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "NPM library for easy usage of yt-dlp",
   "keywords": [
     "yt-dlp",
