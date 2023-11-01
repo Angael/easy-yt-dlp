@@ -5,8 +5,8 @@ export type DownloadVideoTypes = {
   outputDir: string;
   // Filename, without extension and without path
   filename: string;
-  // Still not implemented
-  maxFileSize?: number;
+  /** @example 50k or 44.6M */
+  maxFileSize?: string;
 };
 
 export type DownloadVideoOutput = {

@@ -1,24 +1,25 @@
 import fs from "fs-extra";
 import { join } from "path";
 import { downloadVideo } from "../functions/downloadVideo";
-import { checkFileExists } from "./utils/checkFileExists";
 
-const videoDir = join(__dirname, "/videos");
+import { checkFileExists } from "../functions/utils";
+
+const outputDir = join(__dirname, "/videos");
 
 jest.setTimeout(20 * 1000);
 
 describe("downloadVideo", () => {
   beforeAll(() => {
-    fs.ensureDirSync(videoDir);
-    fs.emptyDirSync(videoDir);
+    fs.ensureDirSync(outputDir);
+    fs.emptyDirSync(outputDir);
   });
 
   afterEach(() => {
-    fs.emptyDirSync(videoDir);
+    fs.emptyDirSync(outputDir);
   });
 
   afterAll(() => {
-    fs.emptyDirSync(videoDir);
+    fs.emptyDirSync(outputDir);
   });
 
   it("tests received env argument", async function () {
@@ -27,12 +28,12 @@ describe("downloadVideo", () => {
 
   it("creates file / returns its filename", async function () {
     const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
-    const videoName = "vid";
+    const filename = "vid";
     const { createdFilePath } = await downloadVideo({
       ytDlpPath: process.env.YTDLP_PATH!,
       link,
-      outputDir: videoDir,
-      filename: videoName,
+      outputDir,
+      filename,
     });
 
     const exists = await checkFileExists(createdFilePath);
@@ -41,20 +42,37 @@ describe("downloadVideo", () => {
     expect(exists).toEqual(true);
   });
 
-  it("can accept format param", async function () {
+  it("accepts format", async function () {
     const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
-    const videoName = "vid-bad-format";
+    const filename = "vid-bad-format";
     const { createdFilePath } = await downloadVideo({
       ytDlpPath: process.env.YTDLP_PATH!,
       link,
       format: "worstvideo*",
-      outputDir: videoDir,
-      filename: videoName,
+      outputDir,
+      filename,
     });
 
     const exists = await checkFileExists(createdFilePath);
 
     expect(createdFilePath).toBeTruthy();
     expect(exists).toEqual(true);
+  });
+
+  it("accepts maxFileSize and throws", function () {
+    const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
+    const filename = "vid-small";
+
+    expect.assertions(1);
+
+    return downloadVideo({
+      ytDlpPath: process.env.YTDLP_PATH!,
+      link,
+      maxFileSize: "1K",
+      outputDir,
+      filename,
+    }).catch((e) => {
+      expect(e).toBeUndefined();
+    });
   });
 });
