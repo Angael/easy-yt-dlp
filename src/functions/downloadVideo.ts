@@ -67,5 +67,10 @@ export const downloadVideo = async (
         rej();
       }
     });
+
+    ytDlpProcess.on("error", async (err) => {
+      await cleanUpTempDir(tempDir);
+      rej(err);
+    });
   });
 };

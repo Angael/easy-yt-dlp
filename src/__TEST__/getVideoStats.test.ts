@@ -20,4 +20,14 @@ describe("getVideoStats", () => {
     expect(videoStats).toHaveProperty("formats");
     expect(videoStats).toHaveProperty("duration");
   });
+
+  it("throws understandable error if yt-dlp is not found", async () => {
+    expect.assertions(1);
+
+    try {
+      await getVideoStats("asd", videoUrl);
+    } catch (e: any) {
+      expect(e.message).toContain("ENOENT");
+    }
+  });
 });

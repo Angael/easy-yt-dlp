@@ -39,4 +39,8 @@ export const getVideoStats = (
         );
       }
     });
+
+    ytDlpProcess.on("error", async (err) => {
+      rej(err);
+    });
   });

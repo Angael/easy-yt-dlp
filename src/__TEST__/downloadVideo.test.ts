@@ -75,4 +75,19 @@ describe("downloadVideo", () => {
       expect(e).toBeUndefined();
     });
   });
+
+  it("throws understandable error if yt-dlp is not found", async () => {
+    expect.assertions(1);
+
+    try {
+      await downloadVideo({
+        ytDlpPath: "asd",
+        link: "https://www.youtube.com/watch?v=O3TtBNOtp-4",
+        outputDir,
+        filename: "vid",
+      });
+    } catch (e: any) {
+      expect(e.message).toContain("ENOENT");
+    }
+  });
 });
