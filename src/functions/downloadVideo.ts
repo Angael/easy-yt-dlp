@@ -4,6 +4,7 @@ import {
   checkFileExists,
   cleanUpTempDir,
   createTempDir,
+  isFile,
   moveFile,
 } from "./utils";
 import { join, parse } from "node:path";
@@ -46,11 +47,10 @@ export const downloadVideo = async (
     createdFilePath = text;
   });
 
-  return new Promise((res, rej) => {
+  return new Promise<DownloadVideoOutput>((res, rej) => {
     ytDlpProcess.on("close", async (code: any) => {
       if (code === 1) {
         // Clean up temp dir
-        await cleanUpTempDir(tempDir);
         rej();
       }
 
@@ -58,19 +58,27 @@ export const downloadVideo = async (
       const fullTempFilePath = join(tempDir, filename);
       const fullDestFilePath = join(outputDir, filename);
 
-      if (await checkFileExists(fullTempFilePath)) {
+      if (
+        (await checkFileExists(fullTempFilePath)) &&
+        (await isFile(fullTempFilePath))
+      ) {
         await moveFile(fullTempFilePath, fullDestFilePath);
-        await cleanUpTempDir(tempDir);
         res({ createdFilePath: fullDestFilePath });
       } else {
-        await cleanUpTempDir(tempDir);
-        rej();
+        rej(new Error(`File not created: ${fullTempFilePath}`));
       }
     });
 
     ytDlpProcess.on("error", async (err) => {
-      await cleanUpTempDir(tempDir);
       rej(err);
     });
-  });
+  })
+    .then((result) => {
+      cleanUpTempDir(tempDir);
+      return result;
+    })
+    .catch((e) => {
+      cleanUpTempDir(tempDir);
+      throw e;
+    });
 };

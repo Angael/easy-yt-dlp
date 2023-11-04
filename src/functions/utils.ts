@@ -53,3 +53,14 @@ export function checkFileExists(filepath: string): Promise<boolean> {
     });
   });
 }
+
+export function isFile(filepath: string): Promise<boolean> {
+  return new Promise((resolve) => {
+    fs.stat(filepath, (err, stats) => {
+      if (err) {
+        resolve(false);
+      }
+      resolve(stats.isFile());
+    });
+  });
+}
