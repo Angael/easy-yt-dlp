@@ -25,7 +25,7 @@
     "test": "cross-env YTDLP_PATH=\"yt-dlp\" jest",
     "test:watch": "jest --watch",
     "prepublishOnly": "yarn build && yarn test",
-    "preversion": "yarn build && yarn generate-docs",
+    "preversion": "yarn build && yarn test && yarn generate-docs",
     "postversion": "git push --follow-tags",
     "generate-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts",
     "generate-docs:watch": "typedoc --watch --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts"
