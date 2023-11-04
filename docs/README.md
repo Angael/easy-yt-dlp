@@ -31,7 +31,7 @@ easy-yt-dlp
 
 #### Defined in
 
-[functions/downloadVideo.types.ts:12](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/downloadVideo.types.ts#L12)
+[functions/downloadVideo.types.ts:12](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/downloadVideo.types.ts#L12)
 
 ___
 
@@ -46,13 +46,13 @@ ___
 | `filename` | `string` | - |
 | `format?` | `string` | - |
 | `link` | `string` | - |
-| `maxFileSize?` | `string` | **`Example`** ```ts 50k or 44.6M ``` |
+| `maxFileSize?` | `string` | **`Example`** ```ts 50k or 44.6M, but cant be b or B ``` |
 | `outputDir` | `string` | - |
 | `ytDlpPath` | `string` | - |
 
 #### Defined in
 
-[functions/downloadVideo.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/downloadVideo.types.ts#L1)
+[functions/downloadVideo.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/downloadVideo.types.ts#L1)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:31](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/getVideoStats.types.ts#L31)
+[functions/getVideoStats.types.ts:31](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/getVideoStats.types.ts#L31)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/getVideoStats.types.ts#L1)
+[functions/getVideoStats.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/getVideoStats.types.ts#L1)
 
 ___
 
@@ -141,7 +141,7 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.types.ts:37](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/getVideoStats.types.ts#L37)
+[functions/getVideoStats.types.ts:37](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/getVideoStats.types.ts#L37)
 
 ## Functions
 
@@ -161,7 +161,7 @@ ___
 
 #### Defined in
 
-[functions/downloadVideo.ts:11](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/downloadVideo.ts#L11)
+[functions/downloadVideo.ts:11](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/downloadVideo.ts#L11)
 
 ___
 
@@ -182,4 +182,4 @@ ___
 
 #### Defined in
 
-[functions/getVideoStats.ts:4](https://github.com/Angael/easy-yt-dlp/blob/09d5b56/src/functions/getVideoStats.ts#L4)
+[functions/getVideoStats.ts:4](https://github.com/Angael/easy-yt-dlp/blob/5e93472/src/functions/getVideoStats.ts#L4)
