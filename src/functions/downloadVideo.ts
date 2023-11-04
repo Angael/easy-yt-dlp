@@ -59,7 +59,7 @@ export const downloadVideo = async (
       const fullDestFilePath = join(outputDir, filename);
 
       if (await checkFileExists(fullTempFilePath)) {
-        await moveFile(fullTempFilePath, join(outputDir, filename));
+        await moveFile(fullTempFilePath, fullDestFilePath);
         await cleanUpTempDir(tempDir);
         res({ createdFilePath: fullDestFilePath });
       } else {
