@@ -15,10 +15,6 @@ describe("downloadVideo", () => {
     fs.emptyDirSync(outputDir);
   });
 
-  afterEach(() => {
-    fs.emptyDirSync(outputDir);
-  });
-
   afterAll(() => {
     fs.emptyDirSync(outputDir);
   });
@@ -62,7 +58,7 @@ describe("downloadVideo", () => {
 
   it("accepts maxFileSize and throws", function () {
     const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
-    const filename = "vid-small";
+    const filename = "maxFileSize";
 
     expect.assertions(1);
 
@@ -94,7 +90,7 @@ describe("downloadVideo", () => {
 
   it("returns full filename path to a file with extension", async () => {
     const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
-    const filename = "vid-bad-format";
+    const filename = "path-test";
     const { createdFilePath } = await downloadVideo({
       ytDlpPath: process.env.YTDLP_PATH!,
       link,
