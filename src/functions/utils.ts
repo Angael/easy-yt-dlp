@@ -59,8 +59,9 @@ export function isFile(filepath: string): Promise<boolean> {
     fs.stat(filepath, (err, stats) => {
       if (err) {
         resolve(false);
+      } else {
+        resolve(stats.isFile());
       }
-      resolve(stats.isFile());
     });
   });
 }

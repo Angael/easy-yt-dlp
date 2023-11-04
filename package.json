@@ -1,6 +1,6 @@
 {
   "name": "easy-yt-dlp",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "description": "NPM library for easy usage of yt-dlp",
   "keywords": [
     "yt-dlp",
@@ -25,10 +25,9 @@
     "test": "cross-env YTDLP_PATH=\"yt-dlp\" jest",
     "test:watch": "jest --watch",
     "prepublishOnly": "yarn build && yarn test",
-    "preversion": "yarn build && yarn generate-docs",
+    "preversion": "yarn build && yarn test && yarn generate-docs",
     "postversion": "git push --follow-tags",
-    "generate-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts",
-    "generate-docs:watch": "typedoc --watch --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts"
+    "generate-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --disableSources --out docs src/index.ts"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
