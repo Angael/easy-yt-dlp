@@ -3,6 +3,7 @@ import { join } from "path";
 import { downloadVideo } from "../functions/downloadVideo";
 
 import { checkFileExists } from "../functions/utils";
+import * as path from "path";
 
 const outputDir = join(__dirname, "/videos");
 
@@ -74,5 +75,42 @@ describe("downloadVideo", () => {
     }).catch((e) => {
       expect(e).toBeUndefined();
     });
+  });
+
+  it("throws understandable error if yt-dlp is not found", async () => {
+    expect.assertions(1);
+
+    try {
+      await downloadVideo({
+        ytDlpPath: "asd",
+        link: "https://www.youtube.com/watch?v=O3TtBNOtp-4",
+        outputDir,
+        filename: "vid",
+      });
+    } catch (e: any) {
+      expect(e.message).toContain("ENOENT");
+    }
+  });
+
+  it("returns full filename path to a file with extension", async () => {
+    const link = "https://www.youtube.com/watch?v=O3TtBNOtp-4";
+    const filename = "vid-bad-format";
+    const { createdFilePath } = await downloadVideo({
+      ytDlpPath: process.env.YTDLP_PATH!,
+      link,
+      format: "worstvideo*",
+      outputDir,
+      filename,
+    });
+
+    const { dir, name, ext, root, base } = path.parse(createdFilePath);
+
+    expect(dir).toBeTruthy();
+    expect(name).toBe(filename);
+    expect(ext).toBeTruthy();
+    expect(ext[0]).toBe(".");
+    expect(root).toBeTruthy();
+    expect(base).toBeTruthy();
+    expect(base).toBe(`${filename}${ext}`);
   });
 });
