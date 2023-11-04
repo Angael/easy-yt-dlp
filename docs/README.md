@@ -29,10 +29,6 @@ easy-yt-dlp
 | :------ | :------ |
 | `createdFilePath` | `string` |
 
-#### Defined in
-
-[functions/downloadVideo.types.ts:12](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/downloadVideo.types.ts#L12)
-
 ___
 
 ### DownloadVideoTypes
@@ -50,10 +46,6 @@ ___
 | `outputDir` | `string` | - |
 | `ytDlpPath` | `string` | - |
 
-#### Defined in
-
-[functions/downloadVideo.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/downloadVideo.types.ts#L1)
-
 ___
 
 ### Thumbnail
@@ -67,10 +59,6 @@ ___
 | `id` | `string` |
 | `preference` | `number` |
 | `url` | `string` |
-
-#### Defined in
-
-[functions/getVideoStats.types.ts:31](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/getVideoStats.types.ts#L31)
 
 ___
 
@@ -106,10 +94,6 @@ ___
 | `video_ext` | `string` |
 | `width` | `number` \| ``null`` |
 
-#### Defined in
-
-[functions/getVideoStats.types.ts:1](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/getVideoStats.types.ts#L1)
-
 ___
 
 ### VideoStats
@@ -139,10 +123,6 @@ ___
 | `vcodec` | `string` |
 | `width` | `number` |
 
-#### Defined in
-
-[functions/getVideoStats.types.ts:37](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/getVideoStats.types.ts#L37)
-
 ## Functions
 
 ### downloadVideo
@@ -158,10 +138,6 @@ ___
 #### Returns
 
 `Promise`<[`DownloadVideoOutput`](README.md#downloadvideooutput)\>
-
-#### Defined in
-
-[functions/downloadVideo.ts:12](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/downloadVideo.ts#L12)
 
 ___
 
@@ -179,7 +155,3 @@ ___
 #### Returns
 
 `Promise`<[`VideoStats`](README.md#videostats)\>
-
-#### Defined in
-
-[functions/getVideoStats.ts:4](https://github.com/Angael/easy-yt-dlp/blob/2f43cd0/src/functions/getVideoStats.ts#L4)

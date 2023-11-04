@@ -27,8 +27,7 @@
     "prepublishOnly": "yarn build && yarn test",
     "preversion": "yarn build && yarn test && yarn generate-docs",
     "postversion": "git push --follow-tags",
-    "generate-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts",
-    "generate-docs:watch": "typedoc --watch --plugin typedoc-plugin-markdown --readme none --out docs src/index.ts"
+    "generate-docs": "typedoc --plugin typedoc-plugin-markdown --readme none --disableSources --out docs src/index.ts"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
